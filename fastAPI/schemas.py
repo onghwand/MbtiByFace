@@ -15,3 +15,6 @@ class Celebrity(CelebrityBase):
     
     class Config:
         orm_mode = True
+
+class faceRequest(BaseModel):
+    image_url: str
