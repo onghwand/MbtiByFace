@@ -25,7 +25,7 @@
 
 > 1. face_recognition 설치 오류
 >
-> - visual studio for c++ 설치로 해결
+> - visual studio for c++ 설치, [cmake 설치](https://velog.io/@glee623/dlib-%EC%84%A4%EC%B9%98-%EC%98%A4%EB%A5%98)
 >
 > 2.  `AttributeError: module 'urllib' has no attribute 'request'`
 >
