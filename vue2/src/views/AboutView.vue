@@ -4,7 +4,7 @@
     <p>성격은 <strong>얼굴</strong>에 나타난다</p>
     <br>
     <h2>내 사진 넣기</h2>
-    <form @submit.prevent="">
+    <form @submit.prevent="uploadPhoto()">
       <input type="file" @change="upload" id="imgUpload">
       <div>
         <button type="submit">가즈아</button>
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import api from '@/api/api'
+// import api from '@/api/api'
 import axios from 'axios'
 
 export default {
@@ -33,9 +33,9 @@ export default {
     uploadPhoto () {
       const frm = new FormData()
       const photoFile = document.getElementById('imgUpload')
-      frm.append('imgUpload', photoFile.files[0])
+      frm.append('file', photoFile.files[0])
       axios({
-        url: api.celebrities.top3,
+        url: 'http://127.0.0.1:8000/uploadfile/',
         method: 'post',
         data: frm,
         headers: {
