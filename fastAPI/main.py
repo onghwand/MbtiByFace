@@ -1,6 +1,7 @@
-from fastapi import Depends, FastAPI
-from sqlalchemy.orm import Session
+from fastapi.middleware.cors import CORSMiddleware
 
+from fastapi import Depends, FastAPI, File, UploadFile
+from sqlalchemy.orm import Session
 
 import crud, models, schemas
 from database import SessionLocal, engine
@@ -8,6 +9,17 @@ from database import SessionLocal, engine
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+
+# CORS
+origins = ['*']
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=['*'],
+    allow_headers=['*']
+)
 
 def get_db():
     db = SessionLocal()
@@ -83,3 +95,13 @@ def read_top3(new_face_img: schemas.faceRequest, skip: int = 0, limit: int = 100
     
     # print(response_dto)
     return response_dto
+
+@app.post("/uploadfile/")
+def create_upload(file: UploadFile):
+    # new_face_img = fr.load_image_file(file)
+    # top, right, bottom, left = fr.face_locations(new_face_img)[0]
+    # new_face = new_face_img[top:bottom, left:right]
+    
+    plt.imshow(file)
+    plt.show() 
+    return {"filename": file.filename}
