@@ -43,13 +43,15 @@ def read_celebrities(skip: int = 0, limit: int = 100, db: Session = Depends(get_
 '''
 임의의 사용자 사진을 받아 가장 비슷한 연예인 정보를 반환
 '''
-# import cv2
+import cv2
 import face_recognition as fr
 import urllib.request as urllib
 from matplotlib import pyplot as plt
+import matplotlib.image as img
+import numpy as np
 import heapq
 @app.post("/celebrities/top3/", response_model=list[schemas.Celebrity])
-def read_top3(new_face_img: schemas.faceRequest, skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+def read_top3(file: UploadFile, skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     celebrities = crud.get_celebrities(db, skip=skip, limit=limit)
     
     plt.rcParams["figure.figsize"] = (1,1)
@@ -63,7 +65,9 @@ def read_top3(new_face_img: schemas.faceRequest, skip: int = 0, limit: int = 100
         celeb_faces.append([face_image, celeb.id])
     
     # 사용자의 얼굴과 유사도 비교 
-    new_face_img = fr.load_image_file(urllib.urlopen(new_face_img.image_url))
+    encoded_img = np.fromstring(file.file.read(), dtype = np.uint8)
+    new_face_img = cv2.imdecode(encoded_img, cv2.IMREAD_COLOR)
+    # new_face_img = fr.load_image_file(img)
     top, right, bottom, left = fr.face_locations(new_face_img)[0]
     new_face = new_face_img[top:bottom, left:right]
     enc_new_face = fr.face_encodings(new_face)
@@ -101,7 +105,8 @@ def create_upload(file: UploadFile):
     # new_face_img = fr.load_image_file(file)
     # top, right, bottom, left = fr.face_locations(new_face_img)[0]
     # new_face = new_face_img[top:bottom, left:right]
-    
-    plt.imshow(file)
+    encoded_img = np.fromstring(file.file.read(), dtype = np.uint8)
+    img = cv2.imdecode(encoded_img, cv2.IMREAD_COLOR)
+    plt.imshow(img)
     plt.show() 
-    return {"filename": file.filename}
+    return {"filename": file.file}

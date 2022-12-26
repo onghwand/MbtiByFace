@@ -35,7 +35,7 @@ export default {
       const photoFile = document.getElementById('imgUpload')
       frm.append('file', photoFile.files[0])
       axios({
-        url: 'http://127.0.0.1:8000/uploadfile/',
+        url: 'http://127.0.0.1:8000/celebrities/top3/',
         method: 'post',
         data: frm,
         headers: {
