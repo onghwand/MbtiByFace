@@ -65,3 +65,16 @@
 > 그래도 일단 응답 받는데 성공
 >
 > ![image-20221226214028438](README.assets/image-20221226214028438.png)
+
+#### -1/9
+
+> aws ec2 인스턴스 만들고 ssh 접속
+>
+> 1. pem키 권한 설정
+> 2. ubuntu 아닌 amazon linux로 만들어서 (ubuntu로 만들어야함) 
+>
+> 뭐가 문제인지 찾는데 오래걸렸다.
+>
+> ![image-20230109235722105](README.assets/image-20230109235722105.png)
+>
+> ![image-20230109235639398](README.assets/image-20230109235639398.png) 
