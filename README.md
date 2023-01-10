@@ -78,3 +78,11 @@
 > ![image-20230109235722105](README.assets/image-20230109235722105.png)
 >
 > ![image-20230109235639398](README.assets/image-20230109235639398.png) 
+
+#### -1/10
+
+> [ec2 인스턴스 내 docker 설치 완료](https://docs.docker.com/engine/install/ubuntu/#set-up-the-repository)
+>
+> ![image-20230111000528890](README.assets/image-20230111000528890.png)
+>
+> ![image-20230111000647097](README.assets/image-20230111000647097.png)
