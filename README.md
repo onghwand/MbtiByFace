@@ -94,3 +94,7 @@
 > ![image-20230113013349887](README.assets/image-20230113013349887.png)
 >
 > ![image-20230113013930130](README.assets/image-20230113013930130.png)
+
+#### -1/20
+
+https://stackoverflow.com/questions/66103898/what-size-aws-ec2-to-install-dlib
