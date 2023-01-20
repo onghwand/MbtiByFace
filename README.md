@@ -98,3 +98,19 @@
 #### -1/20
 
 https://stackoverflow.com/questions/66103898/what-size-aws-ec2-to-install-dlib
+
+> 위의 인스턴스 성능상의 이유가 맞는지는 모르겠지만, 결국 ec2 인스턴스에 dlib 설치를 못해서 배포를 못했다.
+>
+> front js완성했는데 스타일링 하지말까 싶다. 배포 실패하니까 의욕 없어짐
+
+> Home
+
+![image-20230120174335446](README.assets/image-20230120174335446.png)
+
+> 사진 입력
+
+![image-20230120174402721](README.assets/image-20230120174402721.png)
+
+> 결과
+
+![image-20230120174514788](README.assets/image-20230120174514788.png)

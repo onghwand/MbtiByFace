@@ -73,8 +73,8 @@ def read_top3(file: UploadFile, skip: int = 0, limit: int = 100, db: Session = D
     enc_new_face = fr.face_encodings(new_face)
     
     ### 여기 위에거 실행 완료되면 다음거 실행하게끔 해야함(지금 비동기라 오류나는 것 같음)
-    plt.imshow(new_face)
-    plt.show()
+    # plt.imshow(new_face)
+    # plt.show()
     
     # heapq 이용해서 top3 추출 후 return
     ranking = []

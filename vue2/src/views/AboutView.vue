@@ -5,7 +5,7 @@
     <br>
     <h2>내 사진 넣기</h2>
     <form @submit.prevent="uploadPhoto()">
-      <input type="file" @change="upload" id="imgUpload">
+      <input type="file" id="imgUpload">
       <div>
         <button type="submit">가즈아</button>
       </div>
@@ -16,20 +16,13 @@
 <script>
 // import api from '@/api/api'
 import axios from 'axios'
+import router from '@/router'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'AboutView',
-  data () {
-    return {
-      photoUrl: ''
-    }
-  },
   methods: {
-    upload (e) {
-      const file = e.target.files
-      const url = URL.createObjectURL(file[0])
-      this.photoUrl = url
-    },
+    ...mapActions(['saveTop3']),
     uploadPhoto () {
       const frm = new FormData()
       const photoFile = document.getElementById('imgUpload')
@@ -43,7 +36,9 @@ export default {
         }
       })
         .then(res => {
-          console.log(res)
+          console.log(res.data)
+          this.saveTop3(res.data)
+          router.push('result')
         })
         .catch(err => console.log(err))
     }
